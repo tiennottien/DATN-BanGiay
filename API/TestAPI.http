@@ -1,0 +1,128 @@
+### Test API Endpoints - ĐÚNG FORMAT
+
+@baseUrl = https://localhost:7214
+@httpUrl = http://localhost:5000
+
+### 1. Test POST Category (ĐÚNG)
+POST {{httpUrl}}/api/Categories
+Content-Type: application/json
+
+{
+  "name": "Running",
+  "description": "Giày chạy bộ",
+  "status": "active"
+}
+
+### 2. Test POST Color (ĐÚNG)
+POST {{httpUrl}}/api/Colors
+Content-Type: application/json
+
+{
+  "name": "Đen",
+  "status": "active"
+}
+
+### 3. Test POST Size (ĐÚNG)
+POST {{httpUrl}}/api/Sizes
+Content-Type: application/json
+
+{
+  "sizeName": "42",
+  "quantity": 100
+}
+
+### 4. Test POST Image (ĐÚNG)
+POST {{httpUrl}}/api/Images
+Content-Type: application/json
+
+{
+  "url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500",
+  "type": "product",
+  "status": "active"
+}
+
+### 5. Test POST Product (ĐÚNG - CHỈ GỬI CategoryID, KHÔNG GỬI object Category)
+POST {{httpUrl}}/api/Products
+Content-Type: application/json
+
+{
+  "name": "Nike Air Max 2024",
+  "code": "NIKE-AM-2024",
+  "brand": "Nike",
+  "description": "Giày chạy bộ cao cấp với công nghệ đệm khí tiên tiến",
+  "status": "active",
+  "categoryID": 1
+}
+
+### 6. Test POST ProductDetail (ĐÚNG - CHỈ GỬI IDs)
+POST {{httpUrl}}/api/ProductDetails
+Content-Type: application/json
+
+{
+  "productID": 1,
+  "colorID": 1,
+  "sizeID": 1,
+  "imageID": 1,
+  "price": 3500000,
+  "quantity": 50
+}
+
+### 7. Test POST Account (Register) - ĐÚNG
+POST {{httpUrl}}/api/Accounts/Register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "123456",
+  "phoneNumber": "0912345678",
+  "role": "user"
+}
+
+### 8. Test POST Account (Login) - ĐÚNG
+POST {{httpUrl}}/api/Accounts/Login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "123456"
+}
+
+### 9. Test POST Customer (ĐÚNG - CHỈ GỬI AccountID)
+POST {{httpUrl}}/api/Customers
+Content-Type: application/json
+
+{
+  "name": "Nguyễn Văn A",
+  "phoneNumber": "0912345678",
+  "address": "123 Đường ABC",
+  "status": "active",
+  "accountID": 1
+}
+
+### 10. Test POST Voucher (ĐÚNG - CHỈ GỬI CategoryID nếu có)
+POST {{httpUrl}}/api/Vouchers
+Content-Type: application/json
+
+{
+  "code": "GIAM10",
+  "name": "Giảm 10%",
+  "type": "percentage",
+  "discount": 10,
+  "maxDiscount": 100000,
+  "quantity": 100,
+  "startDate": "2024-01-01T00:00:00",
+  "endDate": "2024-12-31T23:59:59",
+  "status": "active"
+}
+
+### 11. Test GET All Products
+GET {{httpUrl}}/api/Products
+
+### 12. Test GET All Categories
+GET {{httpUrl}}/api/Categories
+
+### 13. Test GET All Colors
+GET {{httpUrl}}/api/Colors
+
+### 14. Test GET All Sizes
+GET {{httpUrl}}/api/Sizes
